@@ -6,7 +6,8 @@ var _ = require('lodash');
 commander
   .command('make:component [name]')
   .description('scaffold a new component')
-  .option('-s, --split', 'split the .vue-file into separate files')
+  .option('-s, --single', 'create a single file component')
+  .option('-u, --unscoped', 'unscope the style tag')
   .action(function (name, options) {
     program.action(name, options);
   })
@@ -22,7 +23,8 @@ var program = {
 
     _.mergeWith(generator.config, {
       name: name,
-      isSplit: options ? options.split : false,
+      isSingle: options ? options.single : false,
+      isScoped: options ? !options.unscoped : false,
     }, function (objValue, srcValue) {
       if (_.isArray(objValue)) {
         return objValue.concat(srcValue);
@@ -34,10 +36,14 @@ var program = {
   help: function () {
     log('  Examples:');
     log();
-    log('    # will scaffold a new component', 'muted');
-    log('    $ vueture make:component panel');
-    log('    # will scaffold a new component in a custom directory', 'muted');
-    log('    $ vueture make:component button/link');
+    log('    # Scaffold a component', 'muted');
+    log('    $ blue make:component panel');
+    log();
+    log('    # Scaffold a component with unscoped style', 'muted');
+    log('    $ blue make:component panel -u');
+    log();
+    log('    # Scaffold a single file component in a custom directory', 'muted');
+    log('    $ blue make:component navbar/navbar-top -s');
     log();
   },
   isValid: function (name) {

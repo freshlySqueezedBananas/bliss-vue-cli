@@ -1,10 +1,10 @@
 {
-  "name": "vueture-cli",
-  "version": "0.0.0",
-  "description": "Command line tool for Vueture",
-  "main": "./bin/vueture",
+  "name": "bliss-vue-cli",
+  "version": "0.0.1",
+  "description": "Command line tool for Vue projects",
+  "main": "./bin/blue",
   "bin": {
-    "vueture": "./bin/vueture"
+    "blue": "./bin/blue"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,6 @@
     "url": "git+https://github.com/vueture/vueture-cli.git"
   },
   "keywords": [
-    "vueture",
     "vue",
     "cli",
     "javascript",
