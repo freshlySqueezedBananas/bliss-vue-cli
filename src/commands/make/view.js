@@ -4,9 +4,9 @@ var generator = require('./../../../lib/generator');
 var _ = require('lodash');
 
 commander
-  .command('make:page [name]')
-  .description('scaffold a new page')
-  .option('-s, --split', 'split the .vue-file into separate files')
+  .command('make:view [name]')
+  .description('scaffold a new view')
+  .option('-s, --split', 'create a single file view')
   .action(function (name, options) {
     program.action(name, options);
   })
@@ -21,13 +21,13 @@ var program = {
     }
 
     _.mergeWith(generator.config, {
-      type: 'page',
-      templateDirectory: 'page',
+      type: 'view',
+      templateDirectory: 'view',
       output: {
-        directory: 'src/app/pages/',
+        directory: 'src/app/views',
       },
       name: name,
-      isSplit: options ? options.split : false,
+      isSingle: options ? options.single : false,
     }, function (objValue, srcValue) {
       if (_.isArray(objValue)) {
         return objValue.concat(srcValue);
@@ -39,10 +39,11 @@ var program = {
   help: function () {
     log('  Examples:');
     log();
-    log('    # will scaffold a new page', 'muted');
-    log('    $ vueture make:page home');
-    log('    # will scaffold a new component in a custom directory', 'muted');
-    log('    $ vueture make:component home/index');
+    log('    # Scaffold a view', 'muted');
+    log('    $ blue make:view home');
+    log();
+    log('    # Scaffold a single file view in a custom directory', 'muted');
+    log('    $ blue make:view home/index -s');
     log();
   },
   isValid: function (name) {

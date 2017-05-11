@@ -23,7 +23,7 @@ var program = {
       type: 'transformer',
       templateDirectory: 'transformer',
       output: {
-        directory: 'src/app/transformers/',
+        directory: 'src/app/transformers',
       },
       name: name,
       isSplittable: false,

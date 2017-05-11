@@ -6,7 +6,7 @@ var _ = require('lodash');
 commander
   .command('make:layout [name]')
   .description('scaffold a new layout')
-  .option('-s, --split', 'split the .vue-file into separate files')
+  .option('-s, --single', 'create a single file layout')
   .action(function (name, options) {
     program.action(name, options);
   })
@@ -24,10 +24,10 @@ var program = {
       type: 'layout',
       templateDirectory: 'layout',
       output: {
-        directory: 'src/app/layouts/',
+        directory: 'src/app/layouts',
       },
       name: name,
-      isSplit: options ? options.split : false,
+      isSingle: options ? options.single : false,
     }, function (objValue, srcValue) {
       if (_.isArray(objValue)) {
         return objValue.concat(srcValue);
@@ -39,10 +39,11 @@ var program = {
   help: function () {
     log('  Examples:');
     log();
-    log('    # will scaffold a new layout', 'muted');
-    log('    $ vueture make:layout default');
-    log('    # will scaffold a new layout in a custom directory', 'muted');
-    log('    $ vueture make:layout default/main');
+    log('    # Scaffold a layout', 'muted');
+    log('    $ blue make:layout default');
+    log();
+    log('    # Scaffold a single file layout in a custom directory', 'muted');
+    log('    $ blue make:layout default/main -s');
     log();
   },
   isValid: function (name) {

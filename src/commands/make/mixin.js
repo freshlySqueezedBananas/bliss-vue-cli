@@ -23,7 +23,7 @@ var program = {
       type: 'mixin',
       templateDirectory: 'mixin',
       output: {
-        directory: 'src/app/mixins/',
+        directory: 'src/app/mixins',
       },
       name: name,
       isSplittable: false,

@@ -24,7 +24,7 @@ var program = {
       templateDirectory: 'vuex-module',
       newDir: true,
       output: {
-        directory: 'src/app/store/modules/',
+        directory: 'src/app/store/modules',
       },
       name: name,
       isSplittable: false,
