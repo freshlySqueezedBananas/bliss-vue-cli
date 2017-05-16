@@ -4,11 +4,8 @@ var generator = require('./../../../lib/generator');
 var _ = require('lodash');
 
 commander
-  .command('make:layout [name]')
-  .description('scaffold a new layout')
-  .option('-n, --no-register', 'do not register globally')
-  .option('-s, --single', 'create a single file layout')
-  .option('-u, --unscoped', 'unscope the style tag')
+  .command('make:store-module [name]')
+  .description('scaffold a new Vuex module')
   .action(function (name, options) {
     program.action(name, options);
   })
@@ -17,21 +14,20 @@ commander
   });
 
 var program = {
-  action: function (name, options) {
+  action: function (name) {
     if (!this.isValid(name)) {
       process.exit(1);
     }
 
     _.mergeWith(generator.config, {
-      type: 'layout',
-      templateDirectory: 'layout',
+      type: 'vuex module',
+      templateDirectory: 'vuex-module',
+      newDir: true,
       output: {
-        directory: 'src/app/layouts',
+        directory: 'src/app/store/modules',
       },
       name: name,
-      register: options ? options.register : false,
-      isSingle: options ? options.single : false,
-      isScoped: options ? !options.unscoped : false,
+      isSplittable: false,
     }, function (objValue, srcValue) {
       if (_.isArray(objValue)) {
         return objValue.concat(srcValue);
@@ -43,11 +39,10 @@ var program = {
   help: function () {
     log('  Examples:');
     log();
-    log('    # Scaffold a layout', 'muted');
-    log('    $ blue make:layout default');
-    log();
-    log('    # Scaffold a single file layout in a custom directory', 'muted');
-    log('    $ blue make:layout default/main -s');
+    log('    # will scaffold a new vuex module', 'muted');
+    log('    $ vueture make:vuex-module user');
+    log('    # will scaffold a new vuex-module in a custom directory', 'muted');
+    log('    $ vueture make:vuex-module user/admin');
     log();
   },
   isValid: function (name) {

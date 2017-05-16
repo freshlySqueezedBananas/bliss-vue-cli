@@ -1,20 +1,18 @@
 /* ============
- * {{ name }} Module State
+ * {{ name }} Module
  * ============
  *
  * todo: add documentation here!
  */
 
-// When the request fails
 const success = (response) => {
 };
 
-// When the request fails
 const failed = () => {
 };
 
 export default () => {
-  Vue.$http.get('/account')
+  Vue.$http.get('/')
     .then((response) => {
       success(response);
     })

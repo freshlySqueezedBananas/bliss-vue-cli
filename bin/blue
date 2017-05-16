@@ -8,9 +8,11 @@ program
 require('./../src/commands/make/component');
 require('./../src/commands/make/layout');
 require('./../src/commands/make/mixin');
+require('./../src/commands/make/service');
+require('./../src/commands/make/service-module');
 require('./../src/commands/make/transformer');
 require('./../src/commands/make/view');
-require('./../src/commands/make/vuex-module');
+require('./../src/commands/make/store-module');
 require('./../src/commands/new');
 
 program.parse(process.argv);

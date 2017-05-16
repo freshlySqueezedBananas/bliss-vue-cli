@@ -4,8 +4,8 @@ var generator = require('./../../../lib/generator');
 var _ = require('lodash');
 
 commander
-  .command('make:vuex-module [name]')
-  .description('scaffold a new Vuex module')
+  .command('make:service [name]')
+  .description('scaffold a new service')
   .action(function (name, options) {
     program.action(name, options);
   })
@@ -14,17 +14,16 @@ commander
   });
 
 var program = {
-  action: function (name) {
+  action: function (name, options) {
     if (!this.isValid(name)) {
       process.exit(1);
     }
 
     _.mergeWith(generator.config, {
-      type: 'vuex module',
-      templateDirectory: 'vuex-module',
-      newDir: true,
+      type: 'service',
+      templateDirectory: 'service',
       output: {
-        directory: 'src/app/store/modules',
+        directory: 'src/app/services',
       },
       name: name,
       isSplittable: false,
@@ -39,10 +38,8 @@ var program = {
   help: function () {
     log('  Examples:');
     log();
-    log('    # will scaffold a new vuex module', 'muted');
-    log('    $ vueture make:vuex-module user');
-    log('    # will scaffold a new vuex-module in a custom directory', 'muted');
-    log('    $ vueture make:vuex-module user/admin');
+    log('    # Scaffold a service', 'muted');
+    log('    $ blue make:service auth');
     log();
   },
   isValid: function (name) {
