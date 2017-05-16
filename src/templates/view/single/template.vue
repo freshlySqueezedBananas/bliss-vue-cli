@@ -3,7 +3,7 @@
     {{ name }} page is ready for use!
   </div>
 </template>
-<script>
+<script lang="babel">
   /* ============
    * {{ name }} Page
    * ============

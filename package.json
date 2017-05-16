@@ -36,6 +36,7 @@
     "metalsmith-rename": "^1.0.0",
     "ora": "^0.3.0",
     "path": "^0.12.7",
+    "replace-in-file": "^2.5.0",
     "shelljs": "^0.7.4"
   },
   "homepage": "https://github.com/vueture/vueture-cli#readme"

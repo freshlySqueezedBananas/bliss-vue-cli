@@ -6,6 +6,7 @@ var _ = require('lodash');
 commander
   .command('make:component [name]')
   .description('scaffold a new component')
+  .option('-r, --register', 'register globally')
   .option('-s, --single', 'create a single file component')
   .option('-u, --unscoped', 'unscope the style tag')
   .action(function (name, options) {
@@ -23,6 +24,7 @@ var program = {
 
     _.mergeWith(generator.config, {
       name: name,
+      register: options ? options.register : false,
       isSingle: options ? options.single : false,
       isScoped: options ? !options.unscoped : false,
     }, function (objValue, srcValue) {

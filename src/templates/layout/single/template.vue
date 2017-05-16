@@ -4,7 +4,7 @@
     <slot></slot>
   </div>
 </template>
-<script>
+<script lang="babel">
   /* ============
    * {{ name }} Layout
    * ============
