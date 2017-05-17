@@ -1,7 +1,7 @@
 {
   "name": "bliss-vue-cli",
   "version": "0.0.1",
-  "description": "Command line tool for Vue projects",
+  "description": "Command line tool for Bliss Applications Vue projects",
   "main": "./bin/blue",
   "bin": {
     "blue": "./bin/blue"
@@ -11,18 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vueture/vueture-cli.git"
+    "url": "git+https://github.com/freshlySqueezedBananas/bliss-vue-cli.git"
   },
   "keywords": [
     "vue",
     "cli",
     "javascript",
-    "frontend"
+    "frontend",
+    "blue"
   ],
-  "author": "Vivid Websolutions <info@vivid-websolutions.nl>",
+  "author": "Gonçalo Abreu <gabreu@blissapplications.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vueture/vueture-cli/issues"
+    "url": "https://github.com/freshlySqueezedBananas/bliss-vue-cli/issues"
   },
   "dependencies": {
     "async": "^2.0.1",

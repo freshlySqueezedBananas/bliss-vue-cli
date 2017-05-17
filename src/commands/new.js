@@ -27,10 +27,10 @@ var program = {
 
     this.name = name;
 
-    var spinner = ora('Downloading Vueture...');
+    var spinner = ora('Downloading Blue boilerplate...');
     spinner.start();
 
-    download('vueture/vueture', this.name, { clone: false }, function (err) {
+    download('freshlySqueezedBananas/bliss-vue-boilerplate', this.name, { clone: false }, function (err) {
       spinner.stop();
 
       if (err) {
