@@ -6,14 +6,6 @@
  * {{ name }} module.
  */
 
-import { 
-  STORE
- } from './mutation-types';
+import * from './mutation-types';
 
-export default {
-  [STORE] (state, account) {
-    state.email = account.email;
-    state.firstName = account.firstName;
-    state.lastName = account.lastName;
-  }
-};
+export default {};

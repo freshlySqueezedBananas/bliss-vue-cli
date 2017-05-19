@@ -6,7 +6,8 @@ var _ = require('lodash');
 commander
   .command('make:layout [name]')
   .description('scaffold a new layout')
-  .option('-n, --no-register', 'do not register globally')
+  .option('-f, --force', 'force overwrite')
+  .option('-l, --local', 'do not register globally')
   .option('-s, --single', 'create a single file layout')
   .option('-u, --unscoped', 'unscope the style tag')
   .action(function (name, options) {
@@ -22,17 +23,21 @@ var program = {
       process.exit(1);
     }
 
-    _.mergeWith(generator.config, {
+    var config = {
       type: 'layout',
       templateDirectory: 'layout',
       output: {
         directory: 'src/app/layouts',
       },
       name: name,
-      register: options ? options.register : false,
+      force: options ? options.force : false,
+      global: options ? !options.local : false,
+      isSplittable: true,
       isSingle: options ? options.single : false,
       isScoped: options ? !options.unscoped : false,
-    }, function (objValue, srcValue) {
+    };
+
+    _.mergeWith(generator.config, config, function (objValue, srcValue) {
       if (_.isArray(objValue)) {
         return objValue.concat(srcValue);
       }

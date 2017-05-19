@@ -13,25 +13,28 @@ commander
     program.help();
   });
 
+
 var program = {
   action: function (serviceName, name, options) {
-    if (!this.isValid(name)) {
-      process.exit(1);
-    }
-
-    _.mergeWith(generator.config, {
+    
+    var config = {
       type: 'service-module',
       templateDirectory: 'service-module',
       output: {
-        directory: 'src/app/services/'+serviceName+'/modules',
+        directory: 'src/app/services/' + serviceName + '/modules'
       },
       name: name,
       parent: serviceName,
       isSplittable: false,
       isSingle: true,
-      register: true,
-    }, function (objValue, srcValue) {
-      if (_.isArray(objValue)) {ß
+    };
+
+    if (!this.isValid(name)) {
+      process.exit(1);
+    }
+
+    _.mergeWith(generator.config, config, function (objValue, srcValue) {
+      if (_.isArray(objValue)) {
         return objValue.concat(srcValue);
       }
     });

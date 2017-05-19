@@ -6,7 +6,8 @@ var _ = require('lodash');
 commander
   .command('make:component [name]')
   .description('scaffold a new component')
-  .option('-r, --register', 'register globally')
+  .option('-f, --force', 'force overwrite')
+  .option('-g, --global', 'register globally')
   .option('-s, --single', 'create a single file component')
   .option('-u, --unscoped', 'unscope the style tag')
   .action(function (name, options) {
@@ -22,12 +23,16 @@ var program = {
       process.exit(1);
     }
 
-    _.mergeWith(generator.config, {
+    var config = {
       name: name,
-      register: options ? options.register : false,
+      force: options ? options.force : false,
+      global: options ? options.global : false,
+      isSplittable: true,
       isSingle: options ? options.single : false,
-      isScoped: options ? !options.unscoped : false,
-    }, function (objValue, srcValue) {
+      isScoped: options ? !options.unscoped : false
+    };
+
+    _.mergeWith(generator.config, config, function (objValue, srcValue) {
       if (_.isArray(objValue)) {
         return objValue.concat(srcValue);
       }

@@ -6,8 +6,4 @@
  * on the {{ name }} module.
  */
 
-export const STORE = 'STORE';
-
-export default {
-  STORE,
-};
+export default {};

@@ -5,7 +5,8 @@ var _ = require('lodash');
 
 commander
   .command('make:store-module [name]')
-  .description('scaffold a new Vuex module')
+  .description('scaffold a new store module')
+  .option('-r, --recipe', 'recipe [name]', 'teste')
   .action(function (name, options) {
     program.action(name, options);
   })
@@ -14,19 +15,23 @@ commander
   });
 
 var program = {
-  action: function (name) {
+  action: function (name, options) {
+
+    console.log(options);
+
     if (!this.isValid(name)) {
       process.exit(1);
     }
 
     _.mergeWith(generator.config, {
-      type: 'vuex module',
-      templateDirectory: 'vuex-module',
+      type: 'store module',
+      templateDirectory: 'store-module',
       newDir: true,
       output: {
         directory: 'src/app/store/modules',
       },
       name: name,
+      isCookable: true,
       isSplittable: false,
     }, function (objValue, srcValue) {
       if (_.isArray(objValue)) {
@@ -34,15 +39,16 @@ var program = {
       }
     });
 
-    generator.run();
+    // generator.run();
   },
   help: function () {
     log('  Examples:');
     log();
-    log('    # will scaffold a new vuex module', 'muted');
-    log('    $ vueture make:vuex-module user');
-    log('    # will scaffold a new vuex-module in a custom directory', 'muted');
-    log('    $ vueture make:vuex-module user/admin');
+    log('    # will scaffold a new store module', 'muted');
+    log('    $ vueture make:store-module user');
+    log();
+    log('    # will scaffold a new store-module in a custom directory', 'muted');
+    log('    $ vueture make:store-module user/admin');
     log();
   },
   isValid: function (name) {

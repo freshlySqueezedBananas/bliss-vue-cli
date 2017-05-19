@@ -5,10 +5,4 @@
  * The initial state of the account module.
  */
 
-export default {
-
-export default {
-  email: null,
-  firstName: null,
-  lastName: null
-};
+export default {};
