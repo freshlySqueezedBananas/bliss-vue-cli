@@ -38,10 +38,11 @@ var program = {
   help: function () {
     log('  Examples:');
     log();
-    log('    # will scaffold a new mixin', 'muted');
-    log('    $ vueture make:mixin slot');
-    log('    # will scaffold a new mixin in a custom directory', 'muted');
-    log('    $ vueture make:mixin slot/main');
+    log('    # Scaffold a new mixin', 'muted');
+    log('    $ blue make:mixin slot');
+    log();
+    log('    # Scaffold a new mixin in a custom directory', 'muted');
+    log('    $ blue make:mixin slot/main');
     log();
   },
   isValid: function (name) {

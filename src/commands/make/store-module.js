@@ -6,7 +6,7 @@ var _ = require('lodash');
 commander
   .command('make:store-module [name]')
   .description('scaffold a new store module')
-  .option('-r, --recipe', 'recipe [name]', 'teste')
+  .option('-r, --recipe <name>', 'recipe name')
   .action(function (name, options) {
     program.action(name, options);
   })
@@ -16,8 +16,6 @@ commander
 
 var program = {
   action: function (name, options) {
-
-    console.log(options);
 
     if (!this.isValid(name)) {
       process.exit(1);
@@ -31,6 +29,7 @@ var program = {
         directory: 'src/app/store/modules',
       },
       name: name,
+      recipe: options ? options.recipe : null,
       isCookable: true,
       isSplittable: false,
     }, function (objValue, srcValue) {
@@ -39,7 +38,7 @@ var program = {
       }
     });
 
-    // generator.run();
+    generator.run();
   },
   help: function () {
     log('  Examples:');

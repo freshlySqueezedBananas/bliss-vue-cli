@@ -8,7 +8,7 @@ var log = require('./../../lib/logging');
 require('shelljs/global');
 
 commander
-  .command('new [app-name]')
+  .command('new <name> [includes...]')
   .description('initialize a fresh application')
   .action(function (name) {
     program.action(name);
@@ -23,11 +23,11 @@ var program = {
       process.exit(1);
     }
 
-    log('Crafting the application...', 'info');
+    log('Crafting the application', 'info');
 
     this.name = name;
 
-    var spinner = ora('Downloading Blue boilerplate...');
+    var spinner = ora('Downloading Blue boilerplate');
     spinner.start();
 
     download('freshlySqueezedBananas/bliss-vue-boilerplate', this.name, { clone: false }, function (err) {
