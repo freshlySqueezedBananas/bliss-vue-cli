@@ -1,4 +1,4 @@
-<p align="center"><img width="40"src="https://raw.githubusercontent.com/freshlySqueezedBananas/bliss-vue-cli/master/src/assets/logo.png"></p>
+<p align="center"><img width="150"src="https://raw.githubusercontent.com/freshlySqueezedBananas/bliss-vue-cli/master/src/assets/logo.png"></p>
 
 # bliss-vue-cli
 > CLI tool for Bliss Vue Boilerplate
