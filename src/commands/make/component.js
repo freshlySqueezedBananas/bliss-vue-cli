@@ -1,5 +1,6 @@
 var commander = require('commander');
 var log = require('./../../../lib/logging');
+var chalk = require('chalk');
 var generator = require('./../../../lib/generator');
 var _ = require('lodash');
 
@@ -57,7 +58,7 @@ var program = {
     var isValid = true;
 
     if (!name) {
-      log('No name specified!', 'error');
+      log(chalk.white.bgBlue.bold(' blue ') + chalk.white.bgRed.bold(' ERROR ') + chalk.inverse(' ' + generator.config.type + ' ') + ' Invalid name');
       isValid = false;
     }
 
