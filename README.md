@@ -1,7 +1,7 @@
 <p align="center"><img width="150"src="https://raw.githubusercontent.com/freshlySqueezedBananas/bliss-vue-cli/master/src/assets/logo.png"></p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/bliss-vue-cli"><img src="https://img.shields.io/npm/v/bliss-vue-cli.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/bliss-vue-cli"><img src="https://badge.fury.io/js/bliss-vue-cli.svg" alt="Version"></a>
 </p>
 
 # bliss-vue-cli
