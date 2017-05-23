@@ -15,56 +15,10 @@ $ npm install -g bliss-vue-cli
 ## Usage ##
 Below is an overview about the commands you can use:
 
-### New project ###
+### new ###
 For initializing a new project, use the following command:
 ``` bash
-$ blue new <project-name>
-```
-
-### Scaffolding ###
-#### Component ####
-For scaffolding a component, use the following command:
-``` bash
-$ blue make:component <component-name>
-
-# Use -s or --split if you want to use seperate files instead of a single .vue-file.
-$ blue make:component <component-name> -s
-```
-
-#### Layout ####
-For scaffolding a layout, use the following command:
-``` bash
-$ blue make:layout <layout-name>
-
-# Use -s or --split if you want to use seperate files instead of a single .vue-file.
-$ blue make:layout <layout-name> -s
-```
-
-#### Mixin ####
-For scaffolding a mixin, use the following command:
-``` bash
-$ blue make:mixin <mixin-name>
-```
-
-#### Page ####
-For scaffolding a page, use the following command:
-``` bash
-$ blue make:page <page-name>
-
-# Use -s or --split if you want to use seperate files instead of a single .vue-file.
-$ blue make:page <page-name> -s
-```
-
-#### Transformer ####
-For scaffolding a transformer, use the following command:
-``` bash
-$ blue make:transformer <transformer-name>
-```
-
-#### Vuex Module ####
-For scaffolding a Vuex module, use the following command:
-``` bash
-$ blue make:vuex-module <module-name>
+$ blue new <name>
 ```
 
 ## License ##
