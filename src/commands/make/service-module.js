@@ -4,7 +4,7 @@ var generator = require('./../../../lib/generator');
 var _ = require('lodash');
 
 commander
-  .command('make:service-module [service-name] [name]')
+  .command('make:service-module <service-name> <name>')
   .description('scaffold a new service')
   .action(function (serviceName, name, options) {
     program.action(serviceName, name, options);
@@ -25,6 +25,7 @@ var program = {
       },
       name: name,
       parent: serviceName,
+      global: true,
       isSplittable: false,
       isSingle: true,
     };
@@ -44,8 +45,8 @@ var program = {
   help: function () {
     log('  Examples:');
     log();
-    log('    # Scaffold a service', 'muted');
-    log('    $ blue make:service auth');
+    log('    # Scaffold a service module', 'muted');
+    log('    $ blue make:service-module auth login');
     log();
   },
   isValid: function (name) {

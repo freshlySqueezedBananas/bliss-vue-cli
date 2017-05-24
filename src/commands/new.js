@@ -12,7 +12,7 @@ require('shelljs/global');
 
 commander
   .command('new <type> <name> [includes...]')
-  .description('initialize a fresh application')
+  .description('initialize an application')
   .action(function (type, name, includes) {
     program.action(type, name, includes);
   })
@@ -27,22 +27,17 @@ var types = {
 }
 
 var program = {
-  action: function (type, name, includes) {0
+  action: function (type, name, includes) {
 
-    if (!types[type]) {
-      log(chalk.white.bgBlue.bold(' blue ') + chalk.white.bgRed.bold(' ERROR ') + ' Chosen type "' + type + '" does not exist');
-      process.exit(1);
-    }
-
-    if (!this.isValid(name)) {
+    if (!this.isValid(type, name)) {
       process.exit(1);
     }
  
-    blog('creating', type, name);
+    blog('creating', type + ' - boilerplate: ' + name);
 
     this.name = name;
 
-    var spinner = ora(chalk.white.bgBlue.bold(' blue ') + ' Downloading ' + type + ' boilerplate');
+    var spinner = ora(chalk.white.bgBlue.bold(' blue ') + chalk.black.bgCyan(' downloading ' + type + '-boilerplate '));
     spinner.start();
 
     download(types[type].repo, this.name, { clone: false }, function (err) {
@@ -54,17 +49,18 @@ var program = {
         process.exit(1);
       }
 
-      blog('created', type, name);
+      blog('created', type + ' - boilerplate: ' + name);
       this.complete();
     }.bind(this))
   },
   complete: function () {
     log();
-    log('To get started:');
+    log('Quick start:');
     log();
     log('  $ cd ' + this.name);
     log('  $ npm install');
     log('  $ npm run dev');
+    log();
   },
   help: function () {
     log('  Available types:');
@@ -79,17 +75,23 @@ var program = {
     log('    $ blue new spa awesome-app');
     log();
   },
-  isValid: function (name) {
+  isValid: function (type, name) {
     var isValid = true;
 
     if (!name) {
-      blog('error', false, 'Invalid name');
+      blog('error', type + '-boilerplate', 'Invalid name');
       isValid = false;
     }
 
     if (exists(path.resolve(name))) {
-      blog('error', false, 'Target directory ' + chalk.inverse(' ' + name + ' ') + ' already exists');
+      blog('error', type + '-boilerplate: ' + name, ' already exists');
+      
       isValid = false;
+    }
+
+    if (!types[type]) {
+      blog('error', type + '-boilerplate', 'does not exist');
+      process.exit(1);
     }
 
     return isValid;

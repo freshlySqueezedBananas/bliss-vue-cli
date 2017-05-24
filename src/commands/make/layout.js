@@ -4,7 +4,7 @@ var generator = require('./../../../lib/generator');
 var _ = require('lodash');
 
 commander
-  .command('make:layout [name]')
+  .command('make:layout <name>')
   .description('scaffold a new layout')
   .option('-f, --force', 'force overwrite')
   .option('-l, --local', 'do not register globally')
@@ -19,9 +19,6 @@ commander
 
 var program = {
   action: function (name, options) {
-    if (!this.isValid(name)) {
-      process.exit(1);
-    }
 
     var config = {
       type: 'layout',
@@ -54,15 +51,5 @@ var program = {
     log('    # Scaffold a single file layout in a custom directory', 'muted');
     log('    $ blue make:layout default/main -s');
     log();
-  },
-  isValid: function (name) {
-    var isValid = true;
-
-    if (!name) {
-      log('No name specified!', 'error');
-      isValid = false;
-    }
-
-    return isValid;
   }
 };

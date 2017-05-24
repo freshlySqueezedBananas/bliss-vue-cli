@@ -31,6 +31,7 @@
     "commander": "^2.9.0",
     "consolidate": "^0.14.1",
     "download-git-repo": "^0.1.2",
+    "find-in-files": "^0.4.0",
     "handlebars": "^4.0.5",
     "lodash": "^4.15.0",
     "metalsmith": "^2.2.0",

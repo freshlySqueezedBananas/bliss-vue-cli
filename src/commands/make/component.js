@@ -5,7 +5,7 @@ var generator = require('./../../../lib/generator');
 var _ = require('lodash');
 
 commander
-  .command('make:component [name]')
+  .command('make:component <name>')
   .description('scaffold a new component')
   .option('-f, --force', 'force overwrite')
   .option('-g, --global', 'register globally')
@@ -20,9 +20,6 @@ commander
 
 var program = {
   action: function (name, options) {
-    if (!this.isValid(name)) {
-      process.exit(1);
-    }
 
     var config = {
       name: name,
@@ -53,15 +50,5 @@ var program = {
     log('    # Scaffold a single file component in a custom directory', 'muted');
     log('    $ blue make:component navbar/navbar-top -s');
     log();
-  },
-  isValid: function (name) {
-    var isValid = true;
-
-    if (!name) {
-      log(chalk.white.bgBlue.bold(' blue ') + chalk.white.bgRed.bold(' ERROR ') + chalk.inverse(' ' + generator.config.type + ' ') + ' Invalid name');
-      isValid = false;
-    }
-
-    return isValid;
   }
 };
